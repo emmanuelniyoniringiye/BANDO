@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+  <style>
+
+*{
+  font-family: 'poppins',sans-serif;
+  box-sizing: border-box;
+}
+
+.keys{
+  
+  border: radius 23%;
+  box-shadow: #023526;
+  writing-mode: horizontal-tb;
+}
+button{
+  color: rgb(154, 19, 140);
+}
+body{
+  background: linear-gradient(45deg,red,blue,green);
+  box-shadow: #023526;
+  height: 100vh;
+  width: 100vw;
+  text-align: center;
+}
+button{
+  box-shadow: #02694a;
+}
+#display{
+  position: right;
+  left: 30px;
+  border: 3px solid #73AD21;
+}
+/* .container{
+  width: 200px;
+  height: 120vh;
+  background: #e3f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+.calculator {
+  text-align: center;
+  position: left;
+  background: linear-gradient(135deg,rgb(36, 36, 91),rgb(60, 60, 154),rgb(36, 36, 91));
+    width: 280px;
+    height: 400px;
+    margin: 50px auto;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 5px 5px 15px black;
+    color: black;
+
+   justify-content: flex-start;
+   border: 2px solid black;
+   outline: #4CAF50 solid 10px;
+   margin: 9% center 10px 3px;  
+   
+   padding: 20px;
+   text-align: center;
+  }
+  
+  #display {
+    color: black;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px;
+  text-align: right;
+  }
+  
+  .keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    box-shadow: #024b35;
+  }
+  
+  button {
+    padding: 10px;
+    font-size: 18px;
+    box-shadow: 2px 2px 5px #000;
+    margin: 10px;
+    border: none;
+    background: transparent;
+    width: 40px;
+    height: 40px;
+  }
+  
+
+  </style>
+</head>
+<body>
+  <div class="container"></div>
+  <div class="calculator">
+    <input type="text" id="display" disabled>
+    <div class="keys">
+      <button onclick="appendValue('1')">1</button>
+      <button onclick="appendValue('2')">2</button>
+      <button onclick="appendValue('3')">3</button>
+      <button onclick="appendValue('+')">+</button> 
+      <button onclick="appendValue('4')">4</button>
+      <button onclick="appendValue('5')">5</button>
+      <button onclick="appendValue('6')">6</button>
+      <button onclick="appendValue('-')">-</button> 
+      <button onclick="appendValue('7')">7</button>
+      <button onclick="appendValue('8')">8</button>
+      <button onclick="appendValue('9')">9</button>
+      <button onclick="appendValue('*')">*</button> 
+      <button onclick="appendValue('0')">0</button>
+      <!-- <button onclick="deletelastdigit()">delete</button> -->
+       <button onclick="clearDisplaydeletelastdigit()">C</button>
+      <button onclick="calculate()">=</button> 
+      <button onclick="appendValue('/')">/</button> 
+      <!-- <button onclick="appendValue">ty</button> -->
+      
+    </div>
+  </div>
+  <!-- <script src="script.js"></script> -->
+
+<script>
+  let displayValue ="";
+
+function appendValue(value) {
+  displayValue += value;
+  document.getElementById('display').value = displayValue;
+}
+
+
+// function deleteLastDigit() {
+//   var display = document.getElementById('display');
+//   var currentValue = display.value;
+//   // Remove the last character using slice
+//   var newValue = currentValue.slice(0, -1);
+//   display.value = newValue;
+// }
+
+
+// Function to handle backspace
+// function handleBackspace() {
+//     currentInput = currentInput.slice(0, -1); // Remove the last character
+//     updateDisplay(); // Update the display
+// }
+
+// // Event listener for backspace keypress
+// document.addEventListener("keydown", function(event) {
+//     if (event.key === "Backspace") {
+//         handleBackspace();
+//     }
+// });
+
+// // Example of capturing digit inputs (you may already have this part)
+// document.addEventListener("keydown", function(event) {
+//     var key = event.key;
+//     if (!isNaN(key) || key === '.') {
+//         currentInput += key;
+//         updateDisplay();
+//     }
+// });
+
+// // Assuming you have a display element with id "display" to show the input
+// var display = document.getElementById("display");
+// var currentInput = "";
+
+// // Function to update the display
+// function appendValue() {
+//     display.textContent = currentInput;
+// }
+
+// // Function to handle backspace
+// function handleBackspace() {
+//     currentInput = currentInput.slice(0, -1); // Remove the last character
+//     appendValue(); // Update the display
+// }
+
+// // Event listener for backspace keypress
+// document.addEventListener("keydown", function(event) {
+//     if (event.key === "Backspace") {
+//         handleBackspace();
+//     }
+// });
+
+// // Example of capturing digit inputs (you may already have this part)
+// document.addEventListener("keydown", function(event) {
+//     var key = event.key;
+//     if (!isNaN(key) || key === '.') {
+//         currentInput += key;
+//         appendValue();
+//     }
+// });
+
+
+function clearDisplaydeletelastdigit() {
+  displayValue = displayValue.substring(displayValue.length-1,0);
+ 
+  document.getElementById('display').value = displayValue;
+}
+
+function calculate() {
+  try {
+    const result = eval(displayValue);
+    document.getElementById('display').value = result;
+    displayValue = '';
+  } catch (error) {
+    document.getElementById('display').value = 'Error';
+  }
+}
+</script>
+
+</body>
+</html>
